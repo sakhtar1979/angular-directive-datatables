@@ -27,7 +27,7 @@ Simply put the 'datatable' attribute on the ```<table>```. The directive will re
             <td><a ng-href="users.html?userid={{row.userID}}" title="{{row.FirstName}} {{row.lastName}}">{{row.FirstName}} {{row.lastName}}</a></td>
             <td>{{row.email}}</td>
             <td>{{row.phone}}</td>
-            <td><i ng-class="{'icon-checkmark green': row.isActive,  'icon-close red': !row.isActive}"></i></td>
+            <td><i ng-class="{'icon-ok': row.isActive,  'icon-close': !row.isActive}"></i></td>
             <td>{{row.lastLogin | date:'short'}}</td>
         </tr>
     </tbody>
