@@ -1,0 +1,103 @@
+<html ng-app="app">
+    <head>
+        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <style>
+            .dataTables_wrapper {
+                padding: 70px 0;
+                position: relative;
+            }
+            .dataTables_length {
+                left: 0;
+                position: absolute;
+                top: 20px;
+            }
+            .dataTables_filter {
+                position: absolute;
+                right: 0;
+                top: 20px;
+            }
+            .dataTables_info {
+                bottom: 20px;
+                left: 0;
+                position: absolute;
+            }
+            .dataTables_paginate {
+                bottom: 20px;
+                position: absolute;
+                right: 0;
+            }
+        </style>
+        <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+        <script src="src/directives.datatables.js"></script>
+        <script>
+            var app = angular.module('app', ['directives']);
+            app.controller('ExampleCtrl', ['$scope', function($scope) {
+
+                // an array of objects (randomly generated data for example)
+                $scope.users = [
+                    {
+                        "id": 1,
+                        "firstName": "Wagner",
+                        "lastName": "Case",
+                        "email": "susanacase@octocore.com",
+                        "photo": "http://placehold.it/32x32",
+                        "age": 27,
+                        "isActive": true,
+                        "lastLogin": "2009-11-02T18:18:23"
+                    },
+                    {
+                        "id": 2,
+                        "firstName": "Dejesus",
+                        "lastName": "Caldwell",
+                        "email": "susanacaldwell@octocore.com",
+                        "photo": "http://placehold.it/32x32",
+                        "age": 33,
+                        "isActive": false,
+                        "lastLogin": "1997-01-10T13:38:51"
+                    },
+                    {
+                        "id": 3,
+                        "firstName": "Garrison",
+                        "lastName": "Macdonald",
+                        "email": "susanamacdonald@octocore.com",
+                        "photo": "http://placehold.it/32x32",
+                        "age": 30,
+                        "isActive": true,
+                        "lastLogin": "2005-12-30T14:41:42"
+                    }
+                ];
+
+            }]);
+        </script>
+    </head>
+    <body ng-controller="ExampleCtrl">
+
+        <div class="container">
+            <table datatable class="table table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Age</th>
+                        <th>Active</th>
+                        <th>Last Login</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in users">
+                        <td><img ng-src="{{row.photo}}" alt="{{row.firstName}}" /></td>
+                        <td><a ng-href="user.html?id={{row.id}}" title="{{row.firstName}} {{row.lastName}}">{{row.firstName}} {{row.lastName}}</a></td>
+                        <td>{{row.email}}</td>
+                        <td>{{row.age}}</td>
+                        <td><i ng-class="{'icon-ok': row.isActive, 'icon-remove': !row.isActive}"></i></td>
+                        <td>{{row.lastLogin | date:'short'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </body>
+</html>

@@ -1,4 +1,4 @@
-angular.module('directive', []).directive('datatable', ['$timeout', '$compile',
+angular.module('directives', []).directive('datatable', ['$timeout', '$compile',
     function($timeout, $compile) {
 
         // default options to be used on to all datatables
