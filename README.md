@@ -5,8 +5,16 @@ jQuery DataTables directive for AngularJS.
 
 A quick way to use [jQuery DataTables](https://datatables.net/) plugin in AngularJS with HTML (not just data) in the table.
 
-## Example
+## Use
+Simply put the 'datatable' attribute on the <table>. The directive will read the ng-repeat on the <tr> and monitor it for changes.
 
+Default (common to all tables) options can be set in the directive and overridden by passing an object to the datatable attribute.
+
+```html
+<table datatable="{ 'sPaginationType': 'full_numbers' }">
+```
+
+## Example
 ```html
 <table datatable>
     <thead>
