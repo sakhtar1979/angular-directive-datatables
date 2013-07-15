@@ -36,7 +36,9 @@ angular.module('directives', []).directive('datatable', ['$timeout', '$compile',
                                 if (!element.hasClass('dataTable')) {
 
                                     // init datatables after data load for first time
-                                    table = element.dataTable(options);
+                                    $timeout(function() {
+                                        table = element.dataTable(options);
+                                    });
 
                                 } else if (newValue != oldValue) {
 
