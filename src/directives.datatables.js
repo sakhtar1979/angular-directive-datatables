@@ -1,3 +1,8 @@
+/**
+ * @name datatable
+ * @description Integration of jQuery DataTables plugin. Automaticaly detects ng-repeat table rows.
+ * @author https://github.com/jblettau/angular-directive-datatables
+ */
 angular.module('directives', []).directive('datatable', ['$timeout', '$compile',
     function($timeout, $compile) {
 
@@ -27,12 +32,16 @@ angular.module('directives', []).directive('datatable', ['$timeout', '$compile',
                     var options = angular.extend({}, defaults, scope.$eval(attrs.datatable)),
                         table = null;
 
+                    // add default css style
+                    element.addClass('table table-striped');
+
                     if (watch) {
 
                         // deep watching of dataset to re-init on change
                         scope.$watch(watch, function(newValue, oldValue) {
                             if (newValue) {
 
+                                // check for class, 'fnIsDataTable' doesn't work here
                                 if (!element.hasClass('dataTable')) {
 
                                     // init datatables after data load for first time

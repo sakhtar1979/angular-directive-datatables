@@ -69,13 +69,32 @@
                     }
                 ];
 
+                // add to array
+                $scope.add = function () {
+                    $scope.users.push({
+                        "id": $scope.users.length + 1,
+                        "firstName": "John",
+                        "lastName": "Smith",
+                        "email": "jsmith@octocore.com",
+                        "photo": "http://placehold.it/32x32",
+                        "age": Math.round(Math.random() * (90 - 2) + 2),
+                        "isActive": Math.random() >= 0.5,
+                        "lastLogin": new Date()
+                    });
+                };
+
             }]);
         </script>
     </head>
     <body ng-controller="ExampleCtrl">
 
         <div class="container">
-            <table datatable class="table table-striped">
+
+            <div class="btn-toolbar">
+                <a ng-click="add()" title="Add a User" class="btn btn-primary">Add</a>
+            </div>
+
+            <table datatable>
                 <thead>
                     <tr>
                         <th></th>
@@ -88,7 +107,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="row in users">
-                        <td><img ng-src="{{row.photo}}" alt="{{row.firstName}}" /></td>
+                        <td><img ng-src="{{row.photo}}" alt="{{row.firstName}}" style="height: 32px; width: 32px;" /></td>
                         <td><a ng-href="user.html?id={{row.id}}" title="{{row.firstName}} {{row.lastName}}">{{row.firstName}} {{row.lastName}}</a></td>
                         <td>{{row.email}}</td>
                         <td>{{row.age}}</td>
@@ -97,6 +116,7 @@
                     </tr>
                 </tbody>
             </table>
+
         </div>
 
     </body>
